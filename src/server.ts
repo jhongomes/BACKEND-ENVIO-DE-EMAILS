@@ -1,11 +1,14 @@
+import 'reflect-metadata';
 import express from 'express';
 
 
-const app = express();
+import "./database";
+import router from './routes';
 
-app.get("/", (request, response) => {
-    return response.json({ message: "hello world"})
-})
+
+const app = express();
+app.use(express.json());
+app.use(router)
 
 app.listen(3333, () => console.log(
         " server bakend! " ));
