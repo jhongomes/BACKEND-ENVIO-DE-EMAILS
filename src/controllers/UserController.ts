@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getCustomRepository, getRepository } from "typeorm";
+import {getCustomRepository, getRepository } from 'typeorm';
 import UserRepository from "../repositories/UserRepository";
 class UserController {
 
@@ -10,7 +10,7 @@ class UserController {
       const usersRepository = getCustomRepository(UserRepository);
 
       const userAlreadExists = await usersRepository.findOne({
-          email
+          email,
       })
 
    
@@ -29,7 +29,7 @@ class UserController {
 
       await usersRepository.save(user);
 
-      return response.json(user);
+      return response.status(201).json(user);
 
     }
 
